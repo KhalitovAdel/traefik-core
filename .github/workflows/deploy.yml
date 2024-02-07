@@ -27,8 +27,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            echo "${{ secrets.PORT }}" > app/.env
-            echo "${{ secrets.PORT }}" >> app/.env
-            echo "${{ secrets.PORT }}" >> app/.env
-            docker compose -f app/docker-compose.yml up -d app
+            echo "${{ env.TRAEFIK_ACME_EMAIL }}" > app/.env
+            echo "${{ env.TRAEFIK_HOSTNAME }}" >> app/.env
+            echo "${{ env.TRAEFIK_LOG_LEVEL }}" >> app/.env
+            docker compose -f app/docker-compose.yml up -d
 
