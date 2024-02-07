@@ -19,3 +19,17 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: "docker-compose.yml"
           target: app
+      - name: executing remote ssh commands
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          port: ${{ secrets.PORT }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          envs: TRAEFIK_ACME_EMAIL,TRAEFIK_HOSTNAME,TRAEFIK_LOG_LEVEL
+          script: |
+            echo -n "$TRAEFIK_ACME_EMAIL" > app/.env
+            echo -n "$TRAEFIK_HOSTNAME" >> app/.env
+            echo -n "$TRAEFIK_LOG_LEVEL" >> app/.env
+            docker compose --context app up -d
+
