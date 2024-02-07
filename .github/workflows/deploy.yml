@@ -32,8 +32,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           envs: TRAEFIK_HOSTNAME,TRAEFIK_ACME_EMAIL,TRAEFIK_LOG_LEVEL
           script: |
-            echo "" > app/.env
-            echo "${{ env.TRAEFIK_HOSTNAME }}" >> app/.env
-            echo "${{ env.TRAEFIK_LOG_LEVEL }}" >> app/.env
+            echo "TRAEFIK_ACME_EMAIL=$TRAEFIK_ACME_EMAIL" > app/.env
+            echo "TRAEFIK_HOSTNAME=$TRAEFIK_HOSTNAME" >> app/.env
+            echo "TRAEFIK_LOG_LEVEL=$TRAEFIK_LOG_LEVEL" >> app/.env
             docker compose -f app/docker-compose.yml up -d
 
