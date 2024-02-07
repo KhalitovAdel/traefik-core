@@ -31,7 +31,7 @@ jobs:
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          envs: TRAEFIK_HOSTNAME,TRAEFIK_ACME_EMAIL,TRAEFIK_LOG_LEVEL
+          envs: TRAEFIK_HOSTNAME,TRAEFIK_ACME_EMAIL,TRAEFIK_LOG_LEVEL,SHA
           script: |
             echo "TRAEFIK_ACME_EMAIL=$TRAEFIK_ACME_EMAIL" > app/.env
             echo "TRAEFIK_HOSTNAME=$TRAEFIK_HOSTNAME" >> app/.env
