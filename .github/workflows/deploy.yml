@@ -26,10 +26,9 @@ jobs:
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          envs: TRAEFIK_ACME_EMAIL,TRAEFIK_HOSTNAME,TRAEFIK_LOG_LEVEL
           script: |
-            echo "$TRAEFIK_ACME_EMAIL" > app/.env
-            echo "$TRAEFIK_HOSTNAME" >> app/.env
-            echo "$TRAEFIK_LOG_LEVEL" >> app/.env
-            docker compose up -d app
+            echo "${{ secrets.PORT }}" > app/.env
+            echo "${{ secrets.PORT }}" >> app/.env
+            echo "${{ secrets.PORT }}" >> app/.env
+            docker compose -f app/docker-compose.yml up -d app
 
