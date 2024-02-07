@@ -16,6 +16,6 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SERVER_HOST }}
+          key: ${{ secrets.SSH_KEY }}
           source: "docker-compose.yml"
           target: app
