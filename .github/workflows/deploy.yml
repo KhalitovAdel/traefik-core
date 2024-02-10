@@ -31,5 +31,6 @@ jobs:
             echo "TRAEFIK_HOSTNAME=${{ vars.TRAEFIK_HOSTNAME }}" >> app/.env
             echo "TRAEFIK_LOG_LEVEL=${{ vars.TRAEFIK_LOG_LEVEL }}" >> app/.env
             echo "SHA=${{ github.sha }}" >> app/.env
+            echo "UID=$UID" >> app/.env
             docker compose -f app/docker-compose.yml up -d
 
