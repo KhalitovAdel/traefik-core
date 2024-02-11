@@ -32,5 +32,6 @@ jobs:
             echo "TRAEFIK_LOG_LEVEL=${{ vars.TRAEFIK_LOG_LEVEL }}" >> app/.env
             echo "SHA=${{ github.sha }}" >> app/.env
             echo "UID=$UID" >> app/.env
+            docker volume create acme || echo "volume acme already exists"
             docker compose -f app/docker-compose.yml up -d
 
