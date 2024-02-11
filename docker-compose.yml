@@ -6,6 +6,11 @@ x-default: &x-default
       max-size: 4m
   restart: always
 
+volumes:
+  acme:
+    external: true
+    name: acme
+
 services:
   traefik:
     <<: *x-default
@@ -32,7 +37,7 @@ services:
       - "--global.sendAnonymousUsage=false"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${HOME}/acme:/etc/traefik/acme
+      - acme:/etc/traefik/acme
     ports:
       - "80:80"
       - "443:443"
